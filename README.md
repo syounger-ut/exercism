@@ -1,2 +1,2 @@
 # exercism
-my progress through the exercism code tests
+My progress through the exercism code tests
