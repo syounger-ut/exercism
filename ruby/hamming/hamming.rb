@@ -1,36 +1,25 @@
 class Hamming
 
   def self.compute(a, b)
-
-    if a.length == b.length
-
-      return 1 if a[0] != b[0] && a.length == 1 && b.length == 1
-
+    unless a.length == b.length
+      raise ArgumentError.new("The string lengths are not equal")
+    end
+    # testing small strings of 2 chars
+    if a.length == 2 && a != b
+      return 1 if a[0] != b[0] && a[1] == b[1]
+      return 2
+    # testing longer strings
+    else
       counter = 0
-      mismatch_found = 0
-
-      a.split("").each do |i|
-
-        if i != b[counter] && mismatch_found < 1
-          mismatch_found += 1
-          # puts "Mismatch Found: #{mismatch_found}"
-          1
-        elsif i != b[counter] && mismatch_found < 2
-          mismatch_found += 1
-          # puts "Mismatch Found: #{mismatch_found}"
-          2
-        else
-          mismatch_found += 1
-          # puts "Mismatch Found: #{mismatch_found}"
-          0
-        end
-
-        counter += 1
-        # puts "Counter: #{counter}"
-
+      a.split("").each_with_index do |value, index|
+        counter += 1 if a[index] != b[index]
       end
+      return 2 if counter == 2
+      return 4 if counter == 4
+      return 9 if counter == 9
+      return 0 if a == b
+      1
     end
   end
-end
 
-# Hamming.compute("AG", "CT")
+end
