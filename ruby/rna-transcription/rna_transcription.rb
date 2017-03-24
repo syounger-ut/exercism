@@ -7,30 +7,24 @@ class Complement
       "T": "A",
       "A": "U"
     }
-    dna_matching.each do |key, value|
-      return value if dna == key.to_s
+
+    dna_array = dna.split("")
+    rna_compliment = []
+
+    dna_array.each do |strand|
+      dna_matching.select { |key, value| rna_compliment << value if key.to_s == strand  }
     end
+
+    if rna_compliment.size < dna.length
+      return ""
+    else
+      return rna_compliment.join("")
+    end
+    
   end
-
-  # def self.of_dna(dna)
-  #   if dna == "C"
-  #     return "G"
-  #   elsif dna == "G"
-  #     return "C"
-  #   elsif dna == "T"
-  #     return "A"
-  #   elsif dna == "A"
-  #     return "U"
-  #   elsif dna == "ACGTGGTCTTAA"
-  #     return "UGCACCAGAAUU"
-  #   else
-  #     return ""
-  #   end
-  # end
-
 end
 
-Complement.of_dna("C")
+Complement.of_dna("ACGTXXXCTTAA")
 
 module BookKeeping
 
