@@ -20,11 +20,9 @@ class Complement
     else
       return rna_compliment.join("")
     end
-    
+
   end
 end
-
-Complement.of_dna("ACGTXXXCTTAA")
 
 module BookKeeping
 
