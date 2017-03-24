@@ -8,21 +8,19 @@ class Complement
       "A": "U"
     }
 
-    dna_array = dna.split("")
     rna_compliment = []
 
-    dna_array.each do |strand|
-      dna_matching.select { |key, value| rna_compliment << value if key.to_s == strand  }
+    matches = dna.chars.select do |item|
+      dna_matching[item.to_sym] ? rna_compliment << dna_matching[item.to_sym] : nil
     end
 
-    if rna_compliment.size < dna.length
-      return ""
-    else
-      return rna_compliment.join("")
-    end
+    return "" if matches.size < dna.length
+
+    rna_compliment.join("")
 
   end
 end
+
 
 module BookKeeping
 
