@@ -10,32 +10,54 @@ class GigasecondTest < Minitest::Test
   end
 
   def test_1977_06_13
+<<<<<<< HEAD
     skip
+=======
+    # skip
+>>>>>>> 71bb6dfbad6af286dd479d7d98ff986d7bd057d9
     result = Gigasecond.from(Time.utc(1977, 6, 13, 0, 0, 0))
     assert_equal Time.utc(2009, 2, 19, 1, 46, 40), result
   end
 
   def test_1959_07_19
+<<<<<<< HEAD
     skip
+=======
+    # skip
+>>>>>>> 71bb6dfbad6af286dd479d7d98ff986d7bd057d9
     result = Gigasecond.from(Time.utc(1959, 7, 19, 0, 0, 0))
     assert_equal Time.utc(1991, 3, 27, 1, 46, 40), result
   end
 
   def test_full_time_specified
+<<<<<<< HEAD
     skip
+=======
+    # skip
+>>>>>>> 71bb6dfbad6af286dd479d7d98ff986d7bd057d9
     result = Gigasecond.from(Time.utc(2015, 1, 24, 22, 0, 0))
     assert_equal Time.utc(2046, 10, 2, 23, 46, 40), result
   end
 
   def test_full_time_with_day_roll_over
+<<<<<<< HEAD
     skip
+=======
+    # skip
+>>>>>>> 71bb6dfbad6af286dd479d7d98ff986d7bd057d9
     result = Gigasecond.from(Time.utc(2015, 1, 24, 23, 59, 59))
     assert_equal Time.utc(2046, 10, 3, 1, 46, 39), result
   end
 
   # Test your 1Gs anniversary
   def test_with_your_birthday
+<<<<<<< HEAD
     skip
+=======
+    # skip
+    result = Gigasecond.from(Time.utc(1980, 1, 1, 0, 0, 0))
+    assert_equal Time.utc(2011, 9, 9, 1, 46, 40), result
+>>>>>>> 71bb6dfbad6af286dd479d7d98ff986d7bd057d9
   end
 
   # Problems in exercism evolve over time, as we find better ways to ask
