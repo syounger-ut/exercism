@@ -10,7 +10,7 @@ class Complement
 
     dna.chars.collect do |key|
       dna_matching[key.to_sym] || (return "")
-    end.join("")
+    end.join
 
   end
 end
