@@ -8,19 +8,12 @@ class Complement
       "A": "U"
     }
 
-    rna_compliment = []
-
-    matches = dna.chars.select do |item|
-      dna_matching[item.to_sym] ? rna_compliment << dna_matching[item.to_sym] : nil
-    end
-
-    return "" if matches.size < dna.length
-
-    rna_compliment.join("")
+    dna.chars.collect do |key|
+      dna_matching[key.to_sym] || (return "")
+    end.join("")
 
   end
 end
-
 
 module BookKeeping
 
