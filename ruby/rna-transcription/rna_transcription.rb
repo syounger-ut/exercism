@@ -1,18 +1,15 @@
 class Complement
+  DNA_MATCHING = {
+    "C" => "G",
+    "G" => "C",
+    "T" => "A",
+    "A" => "U"
+  }
 
   def self.of_dna(dna)
-    dna_matching = {
-      "C": "G",
-      "G": "C",
-      "T": "A",
-      "A": "U"
-    }
-
-    dna.chars.collect do |key|
-      dna_matching[key.to_sym] || (return "")
-    end.join
-
+    dna.chars.collect { |key| DNA_MATCHING[key] or return "" }.join
   end
+
 end
 
 module BookKeeping
