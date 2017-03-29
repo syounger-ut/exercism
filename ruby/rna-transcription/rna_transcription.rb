@@ -6,8 +6,8 @@ class Complement
     "A" => "U"
   }
 
-  def self.of_dna(dna)
-    dna.chars.collect { |key| DNA_MATCHING[key] or return "" }.join
+  def self.of_dna(strand)
+    strand.chars.collect { |key| DNA_MATCHING[key] or return "" }.join
   end
 
 end
