@@ -7,7 +7,7 @@ class Complement
   }
 
   def self.of_dna(strand)
-    strand.chars.collect { |key| DNA_MATCHING[key] or return "" }.join
+    strand.chars.each_with_object("") { |i, str| str << ( DNA_MATCHING[i] or return "" ) }
   end
 
 end
