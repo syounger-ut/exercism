@@ -2,29 +2,31 @@ require 'pry'
 
 class Fixnum
 
-  M = 1000
-  L = "blah"
-  C = "blah"
-  D = "blah"
+  # M = 1000
+  # L = "blah"
+  # C = "blah"
+  # D = "blah"
 
   def to_roman
 
-    n = self.to_f
+    n = self
 
-    x = n % 10
-    v = n % 5
-    i = n % 1
-binding.pry
-    if x == 0
-      "X"
-    elsif v == 0
-      "V"
-    elsif i > 3
-      "IV"
-    else
-      n.to_i.times.map{ |num| "I" }.join
-    end
+    numerals = {
+      i: 1,
+      v: 5,
+      x: 10
+    }
+
+    divisors = numerals.select { |x, y| n % y == 0 }.values
+
+    i = n % 5 <= 3 ? (n % 5).times.map { |x| "I" }.join : "I"
+
+    v = [1,4,5].include?(n%5)
+
+    binding.pry
 
   end
 
 end
+
+4.to_roman
