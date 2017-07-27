@@ -11,22 +11,28 @@ class Fixnum
 
     n = self
 
-    numerals = {
-      i: 1,
-      v: 5,
-      x: 10
-    }
+    # numerals = {
+    #   i: 1,
+    #   v: 5,
+    #   x: 10
+    # }
 
-    divisors = numerals.select { |x, y| n % y == 0 }.values
+    i = n % 5 <= 3 ? (n % 5).times.map { "I" }.join : "I"
 
-    i = n % 5 <= 3 ? (n % 5).times.map { |x| "I" }.join : "I"
+    v = [0, 1, 4].include?(n % 5) && ![9,0,1].include?(n % 10) ? "V" : nil
 
-    v = [1,4,5].include?(n%5)
+    x =  [0,1,9].include?(n % 10) ? (n / 10.0).round.times.map { "X" }.join : nil
 
-    binding.pry
+    # binding.pry
+
+    if n % 5 == 4
+      [ x, i, v ].join
+    elsif [0,1,9].include?(n % 10)
+      [ i, x ].join
+    else
+      [ x, v, i].join
+    end
 
   end
 
 end
-
-4.to_roman
