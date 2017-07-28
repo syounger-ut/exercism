@@ -17,21 +17,43 @@ class Fixnum
     #   x: 10
     # }
 
-    i = n % 5 <= 3 ? (n % 5).times.map { "I" }.join : "I"
+    x =  [0,1,9].include?(n % 10) ? (n / 10.0).round.times.map { "X" } : nil
 
     v = [0, 1, 4].include?(n % 5) && ![9,0,1].include?(n % 10) ? "V" : nil
 
-    x =  [0,1,9].include?(n % 10) ? (n / 10.0).round.times.map { "X" }.join : nil
+    i = n % 5 <= 3 ? (n % 5).times.map { "I" } : "I" unless n % 10 == 0 || n % 5 == 0
 
     # binding.pry
 
-    if n % 5 == 4
-      [ x, i, v ].join
-    elsif [0,1,9].include?(n % 10)
-      [ i, x ].join
-    else
-      [ x, v, i].join
-    end
+    if x.count > 1
+      # line up all x's apart from the last, which will be placed after the 'I'
+      x.select{ |q| q != x.last } << [ i, x.last ]
+    elsif x.count == 1 && n < 10
+      [ i, x ]
+    elsif x.count == 1 && n >= 10 && v.count == 0
+      [ x, i ]
+    elsif n % 5 == 4 && x.count == 0
+      [ i, v ]
+    elsif (n % 5 == 0 || n % 5 == 1)
+      [ x, v, i]
+    end.join
+
+
+
+
+    # if n % 5 == 4
+    #   [ x, i, v ].join
+    # elsif n % 5 == 0
+    #   [ x, v ].join
+    # elsif n % 5 == 1
+    #   [ x, v, i ].join
+    # elsif n % 10 == 9
+    #   [ i, x ].join
+    # elsif n % 10 == 0
+    #   [ x, v ].join
+    # elsif n % 10 == 1
+    #   [ x, v, i ].join
+    # end
 
   end
 
