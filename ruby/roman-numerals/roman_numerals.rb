@@ -17,26 +17,37 @@ class Fixnum
     #   x: 10
     # }
 
-    x =  [0,1,9].include?(n % 10) ? (n / 10.0).round.times.map { "X" } : nil
+    x =  [ 0, 1 , 9 ].include?(n % 10) || n > 10 ? (n / 10.0).round.times.map { "X" } : nil
 
-    v = [0, 1, 4].include?(n % 5) && ![9,0,1].include?(n % 10) ? "V" : nil
+    v = [ 0, 1, 4 ].include?(n % 5) && ![9,0,1].include?(n % 10) ? "V" : nil
 
     i = n % 5 <= 3 ? (n % 5).times.map { "I" } : "I" unless n % 10 == 0 || n % 5 == 0
 
-    # binding.pry
+    binding.pry if n == 27
 
-    if x.count > 1
-      # line up all x's apart from the last, which will be placed after the 'I'
-      x.select{ |q| q != x.last } << [ i, x.last ]
-    elsif x.count == 1 && n < 10
-      [ i, x ]
-    elsif x.count == 1 && n >= 10 && v.count == 0
-      [ x, i ]
-    elsif n % 5 == 4 && x.count == 0
-      [ i, v ]
-    elsif (n % 5 == 0 || n % 5 == 1)
-      [ x, v, i]
-    end.join
+    last_digit = n.to_s.split.last.to_i
+
+    if last_digit == 9
+      [ i, x ].join
+    elsif last_digit == 4
+      [ i, v ].join
+    else
+      [x, v, i].join
+    end
+
+
+    # if x.count > 1
+    #   # line up all x's apart from the last, which will be placed after the 'I'
+    #   x.select{ |q| q != x.last } << [ i, x.last ]
+    # elsif x.count == 1 && n < 10
+    #   [ i, x ]
+    # elsif x.count == 1 && n >= 10 && v.count == 0
+    #   [ x, i ]
+    # elsif n % 5 == 4 && x.count == 0
+    #   [ i, v ]
+    # elsif (n % 5 == 0 || n % 5 == 1)
+    #   [ x, v, i]
+    # end.join
 
 
 

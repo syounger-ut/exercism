@@ -25,7 +25,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_5
-    skip
+    # skip
     assert_equal 'V', 5.to_roman
   end
 
@@ -40,7 +40,7 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_27
-    skip
+    # skip
     assert_equal 'XXVII', 27.to_roman
   end
 
