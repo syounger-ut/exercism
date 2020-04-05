@@ -1,0 +1,1 @@
+scalac -bootclasspath /Users/samyounger/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.11/scala-library-2.12.11.jar -classpath /Users/samyounger/development/learning/exercism/scala/two-fer/target/scala-2.12/classes /Users/samyounger/development/learning/exercism/scala/two-fer/src/main/scala/Twofer.scala

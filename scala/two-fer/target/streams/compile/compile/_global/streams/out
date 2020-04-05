@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/samyounger/development/learning/exercism/scala/two-fer/src/main/scala/Twofer.scala:2:14: identifier expected but 'val' found.[0m
+[0m[[0m[31merror[0m] [0m[0m  def twofer(val name: String = "you"): String = {[0m
+[0m[[0m[31merror[0m] [0m[0m             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/samyounger/development/learning/exercism/scala/two-fer/src/main/scala/Twofer.scala:5:1: ':' expected but '}' found.[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
