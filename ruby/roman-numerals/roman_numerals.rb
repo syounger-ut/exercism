@@ -1,71 +1,61 @@
 require 'pry'
 
 class Fixnum
-
-  # M = 1000
-  # L = "blah"
-  # C = "blah"
-  # D = "blah"
+  ROMAN_NUMERALS = {
+    '1'   => 'I',
+    '5'   => 'V',
+    '10'  => 'X',
+    '50'  => 'L',
+    '100' => 'C',
+    '500' => 'D',
+    '1000' => 'M'
+  }
 
   def to_roman
-
+    # Break the number into Thousands, Hundreds, Tens and Ones, and write down each in turn.
     n = self
+    number_of_chars = n.to_s.chars.count
 
-    # numerals = {
-    #   i: 1,
-    #   v: 5,
-    #   x: 10
-    # }
-
-    x =  [ 0, 1 , 9 ].include?(n % 10) || n > 10 ? (n / 10.0).round.times.map { "X" } : nil
-
-    v = [ 0, 1, 4 ].include?(n % 5) && ![9,0,1].include?(n % 10) ? "V" : nil
-
-    i = n % 5 <= 3 ? (n % 5).times.map { "I" } : "I" unless n % 10 == 0 || n % 5 == 0
-
-    binding.pry if n == 27
-
-    last_digit = n.to_s.split.last.to_i
-
-    if last_digit == 9
-      [ i, x ].join
-    elsif last_digit == 4
-      [ i, v ].join
-    else
-      [x, v, i].join
+    case number_of_chars
+    when 4
+      # code fo 1000's
+    when 3
+      # code for 100's
+    when 2
+      # code for 10's
+      # binding.pry
+      multiple = n.digits.last
+      tens = combine_numerals(multiple, 'X')
+      single = singles(n.digits.first)
+      [tens, single].join
+    when 1
+      # code for 1's
+      singles(n)
     end
+  end
 
+  private
 
-    # if x.count > 1
-    #   # line up all x's apart from the last, which will be placed after the 'I'
-    #   x.select{ |q| q != x.last } << [ i, x.last ]
-    # elsif x.count == 1 && n < 10
-    #   [ i, x ]
-    # elsif x.count == 1 && n >= 10 && v.count == 0
-    #   [ x, i ]
-    # elsif n % 5 == 4 && x.count == 0
-    #   [ i, v ]
-    # elsif (n % 5 == 0 || n % 5 == 1)
-    #   [ x, v, i]
-    # end.join
+  def singles(n)
+    if n == 4
+      'IV'
+    elsif n == 5
+      'V'
+    elsif n == 6
+      'VI'
+    elsif n == 7
+      'VII'
+    elsif n == 8
+      'VIII'
+    elsif n == 9
+      'IX'
+    else
+      combine_numerals(n, 'I')
+    end
+  end
 
-
-
-
-    # if n % 5 == 4
-    #   [ x, i, v ].join
-    # elsif n % 5 == 0
-    #   [ x, v ].join
-    # elsif n % 5 == 1
-    #   [ x, v, i ].join
-    # elsif n % 10 == 9
-    #   [ i, x ].join
-    # elsif n % 10 == 0
-    #   [ x, v ].join
-    # elsif n % 10 == 1
-    #   [ x, v, i ].join
-    # end
-
+  def combine_numerals(multiple, numeral)
+    multiple.times.map { |x| numeral }.join
   end
 
 end
