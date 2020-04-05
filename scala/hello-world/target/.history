@@ -1,0 +1,31 @@
+compile
+run
+exit
+compile
+run
+test
+run
+main/run
+HelloWorld/run
+run
+compile
+run
+compile
+exit
+package
+run
+help run
+run
+test
+doc
+sbt clean compile package
+exit
+compile
+run
+exit
+compile
+run
+java -version
+exit
+run
+exit
