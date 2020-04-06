@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/samyounger/development/learning/exercism/scala/robot-name/src/main/scala/RobotName.scala:5:50: class java.lang.String is not a value[0m
+[0m[[0m[31merror[0m] [0m[0m  var alreadyUsedNames:Array[String] = new Array(String)(676000)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
