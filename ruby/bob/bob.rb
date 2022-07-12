@@ -1,5 +1,3 @@
-require 'pry'
-
 class Bob
   def self.hey(remark)
     str = new(remark.strip)
