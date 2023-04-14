@@ -8,37 +8,30 @@ class MatchingBracketsTest extends FunSuite with Matchers {
   }
 
   test("empty string") {
-    pending
     MatchingBrackets.isPaired("") should be(true)
   }
 
   test("unpaired brackets") {
-    pending
     MatchingBrackets.isPaired("[[") should be(false)
   }
 
   test("wrong ordered brackets") {
-    pending
     MatchingBrackets.isPaired("}{") should be(false)
   }
 
   test("wrong closing bracket") {
-    pending
     MatchingBrackets.isPaired("{]") should be(false)
   }
 
   test("paired with whitespace") {
-    pending
     MatchingBrackets.isPaired("{ }") should be(true)
   }
 
   test("partially paired brackets") {
-    pending
     MatchingBrackets.isPaired("{[])") should be(false)
   }
 
   test("simple nested brackets") {
-    pending
     MatchingBrackets.isPaired("{[]}") should be(true)
   }
 
