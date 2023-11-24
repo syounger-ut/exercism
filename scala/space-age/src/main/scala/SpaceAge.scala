@@ -1,27 +1,30 @@
 object SpaceAge {
   private val EARTH_ROTATION_SECONDS = 31_557_600
+  private val EARTH_ROTATION_RATIO = Map(
+    "venus" -> 0.61519726,
+    "mercury" -> 0.2408467,
+    "mars" -> 1.8808158,
+    "jupiter" -> 11.862615,
+    "saturn" -> 29.447498,
+    "uranus" -> 84.016846,
+    "neptune" -> 164.79132
+  )
+
   def onEarth(age: Double): Double = earthAge(1, age)
 
-  private val VENUS_EARTH_ROTATION_RATIO = 0.61519726
-  def onVenus(age: Double): Double = earthAge(VENUS_EARTH_ROTATION_RATIO, age)
+  def onVenus(age: Double): Double = earthAge(EARTH_ROTATION_RATIO("venus"), age)
 
-  private val MERCURY_EARTH_ROTATION_RATIO = 0.2408467
-  def onMercury(age: Double): Double = earthAge(MERCURY_EARTH_ROTATION_RATIO, age)
+  def onMercury(age: Double): Double = earthAge(EARTH_ROTATION_RATIO("mercury"), age)
 
-  private val MARS_EARTH_ROTATION_RATIO = 1.8808158
-  def onMars(age: Double): Double = earthAge(MARS_EARTH_ROTATION_RATIO, age)
+  def onMars(age: Double): Double = earthAge(EARTH_ROTATION_RATIO("mars"), age)
 
-  private val JUPITER_EARTH_ROTATION_RATIO = 11.862615
-  def onJupiter(age: Double): Double = earthAge(JUPITER_EARTH_ROTATION_RATIO, age)
+  def onJupiter(age: Double): Double = earthAge(EARTH_ROTATION_RATIO("jupiter"), age)
 
-  private val SATURN_EARTH_ROTATION_RATIO = 29.447498
-  def onSaturn(age: Double): Double = earthAge(SATURN_EARTH_ROTATION_RATIO, age)
+  def onSaturn(age: Double): Double = earthAge(EARTH_ROTATION_RATIO("saturn"), age)
 
-  private val URANUS_EARTH_ROTATION_RATIO = 84.016846
-  def onUranus(age: Double): Double = earthAge(URANUS_EARTH_ROTATION_RATIO, age)
+  def onUranus(age: Double): Double = earthAge(EARTH_ROTATION_RATIO("uranus"), age)
 
-  private val NEPTUNE_EARTH_ROTATION_RATIO = 164.79132
-  def onNeptune(age: Double): Double = earthAge(NEPTUNE_EARTH_ROTATION_RATIO, age)
+  def onNeptune(age: Double): Double = earthAge(EARTH_ROTATION_RATIO("neptune"), age)
 
   private def earthAge(ratio: Double, age: Double) = age / earthYearRatio(ratio)
 
