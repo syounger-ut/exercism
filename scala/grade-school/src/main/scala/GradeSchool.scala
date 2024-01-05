@@ -2,35 +2,21 @@ class School {
   type DB = Map[Int, Seq[String]]
   private var database: DB = Map()
 
-  def add(name: String, g: Int): DB = {
-    val studentNames = {
-      if (!db.contains(g)) Seq()
-      else db(g)
+  def add(name: String, g: Int) = {
+    val grade = database.get(g) match {
+      case Some(gradeNames) => gradeNames :+ name
+      case None => Seq(name)
     }
 
-    database = db + (g -> (studentNames :+ name))
-    database
+    database = database + (g -> grade)
   }
 
-  def db: DB = {
-    if (database.isEmpty) createDatabase()
-    database
+  def db: DB = database
+
+  def grade(g: Int): Seq[String] = db.get(g) match {
+    case Some(names) => names
+    case None => Seq()
   }
 
-  def grade(g: Int): Seq[String] = {
-    if (!db.contains(g)) Seq()
-    else db(g)
-  }
-
-  def sorted: DB = {
-    val sortedKeys = db.keys.toList.sorted
-    val sortedValues = sortedKeys.map(key => db(key).sorted)
-    val sortedDB = (sortedKeys zip sortedValues).toMap
-    sortedDB
-  }
-
-  private def createDatabase(): DB = {
-    database = Map()
-    database
-  }
+  def sorted: DB = db.toList.map((item) => (item._1, item._2.sorted)).sortBy(_._1).toMap
 }
